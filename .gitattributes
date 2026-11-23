@@ -1,0 +1,2 @@
+# Keep Solidity source formatting deterministic across Windows and Linux.
+*.sol text eol=lf
