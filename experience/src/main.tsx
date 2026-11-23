@@ -235,7 +235,7 @@ function App() {
       </section>
       <section className="value-strip">
         <div><span>01 / SIFT</span><h2>Read the signal, not just the score.</h2><p>Compare ten real derived profile features and follow the screening route.</p></div>
-        <div><span>02 / ROUTE</span><h2>Watch Reactive make the difference.</h2><p>Base Sepolia origin. Lasna inference. Authenticated callback.</p></div>
+        <div><span>02 / ROUTE</span><h2>Watch Reactive make the difference.</h2><p>The neural screen runs inside Reactive's <code>react()</code> handler on Lasna — no off-chain inference service or keeper. Its authenticated callback updates the Base Sepolia escrow.</p></div>
         <div><span>03 / DECIDE</span><h2>Human judgment stays in the loop.</h2><p>Held cases require review and a separately authorized payout.</p></div>
       </section>
       <section className="landing-next">

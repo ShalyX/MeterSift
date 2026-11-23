@@ -98,3 +98,10 @@ These metrics do not establish field performance or real theft detection. The sy
 The private proof bundle records 25 transaction steps. The browser explorer surfaces ten receipt rows. This public derivative intentionally omits account-funding transactions, wallet details, raw meter profiles, raw review JSON, private logs and local environment files.
 
 Both funded cases are testnet demonstrations using synthetic profiles and test ETH. Both final settlements read `RELEASED`; remaining escrow principal, Reactive debt and callback debt were zero at the recorded verification. No mainnet deployment, production utility integration, live meter feed, customer adoption, field validation or automated payout is claimed.
+## Reproducibility and judge-path rehearsal — 2026-11-23
+
+A temporary clean Git repository was created from the proposed candidate set. A fresh recursive clone checked out Reactive Omni 3ade0dc and nested forge-std 620536f. From that clean clone, Foundry build and formatting passed, all 29 Solidity tests passed, all 6 Python feature tests passed (Python 3.13 locally; the workflow declares 3.12), npm ci completed with 0 reported vulnerabilities, and the Vite production build passed. The root .gitattributes rule keeps Solidity files at LF on Windows even with core.autocrlf=true.
+
+The builder-side browser judge-path rehearsal from that clean clone passed 30/30 checks, including the exception and routine paths, human approval and separate release, evidence drawer, ten receipt rows, read-only current-state query, and 390px/360px mobile layouts. At query time, the read-only Base Sepolia RPC returned RELEASED with 0 wei remaining.
+
+This was a temporary local Git clone and local bare origin, not the public project repository. GitHub Actions has not run because the actual project has no remote. No chain writes were performed. This is builder-side rehearsal evidence, not independent external judge review or field validation.
