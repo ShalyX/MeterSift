@@ -74,7 +74,7 @@ The committed review record is synthetic and minimal. Its note is only "Approve"
 
 ## Principal protection evidence
 
-A preserved local Foundry run records four passing escrow tests, including:
+The final clean-clone Foundry run on 2026-11-24 passed 29/29 Solidity tests, including these four escrow-safety tests:
 
 - `testProxyFeesCannotSpendPrincipal`
 - `testDecisionCannotTakeFundingFromAnotherMeter`
@@ -109,6 +109,12 @@ A temporary clean Git repository was created from the proposed candidate set. A 
 The builder-side browser judge-path rehearsal from that clean clone passed 31/31 checks, including the exception and routine paths, human approval and separate release, evidence drawer, ten receipt rows, read-only current-state query, and 390px/360px mobile layouts. At query time, the read-only Base Sepolia RPC returned RELEASED with 0 wei remaining.
 
 This was a temporary local Git clone and local bare origin, not the public project repository. GitHub Actions has not run because the actual project has no remote. No chain writes were performed. This is builder-side rehearsal evidence, not independent external judge review or field validation.
+
+## Final release-review rehearsal — 2026-11-24
+
+A release-review candidate was checked from a fresh temporary recursive Git clone with Reactive Omni 3ade0dc and nested forge-std 620536f. Foundry build and formatting passed; Solidity tests passed 29/29; Python feature tests passed 6/6 (Python 3.13 locally; CI declares 3.12); clean npm ci passed with 0 reported vulnerabilities; and the Vite production build passed. The updated browser judge-path rehearsal passed 34/34 checks, including the account-authenticity disclosure and direct Reactscan link.
+
+Receipt audit: all 14 Base Sepolia and 8 Reactive Lasna transaction hashes listed in this summary returned successful receipts (status 0x1) through their respective RPC endpoints. All eight Lasna Reactscan transaction pages returned HTTP 200 from the build machine. No chain writes were sent. This was a builder-side local rehearsal, not a public GitHub Actions run or independent external judge review.
 
 ## Read-only state recheck — 2026-11-24
 
