@@ -1,0 +1,40 @@
+name: CI
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (including Reactive library submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python test dependency
+        run: python -m pip install -r requirements-dev.txt
+      - name: Build contracts and deployment scripts
+        run: forge build
+      - name: Solidity formatting
+        run: forge fmt --check
+      - name: Solidity tests
+        run: forge test -vv
+      - name: Feature encoder tests
+        run: python -m unittest discover -s test -p "test_feature_encoder.py" -v
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: experience/package-lock.json
+      - name: Build read-only explorer
+        working-directory: experience
+        run: |
+          npm ci
+          npm run build

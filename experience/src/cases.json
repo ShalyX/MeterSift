@@ -1,0 +1,159 @@
+{
+  "label": "SYNTHETIC PROFILES \u00b7 BASE SEPOLIA + REACTIVE LASNA \u00b7 RECORDED TESTNET PROOF",
+  "escrow": "0x139B7fA07BA157e2775BF1D450cd4B0058400133",
+  "reactive": "0x07B7B5A3C82D0Fe4eA969307083B313a6aa5b89E",
+  "origin": "0x2a365F40EA2b11941f5271b4c48B930C162c543D",
+  "featureNames": [
+    "log_energy_ratio_same_weekday_4w",
+    "zero_hour_fraction",
+    "coefficient_of_variation",
+    "peak_to_mean",
+    "profile_total_variation",
+    "profile_correlation",
+    "reverse_profile_tv",
+    "reverse_profile_correlation",
+    "first_half_log_ratio",
+    "second_half_log_ratio"
+  ],
+  "scale": 1000000,
+  "amountWei": 10000000000000,
+  "cases": {
+    "normal": {
+      "key": "normal",
+      "name": "Routine profile",
+      "meter": "0x526fa0b8e4885aade8860e25b6ee36964f979165",
+      "sequence": 1,
+      "settlementId": "0x95882e931e836bea02cf739306ad6d3a60d12dbf2056aa8de8f239205f1644e0",
+      "profileHash": "0xb64f36106414a00a37b3b550183dfc01837d4ca291a7da5bc452f5cb4387ac3b",
+      "features": [
+        497073,
+        0,
+        317831,
+        1604123,
+        9910,
+        996157,
+        200131,
+        -274570,
+        489506,
+        508166
+      ],
+      "logitQ": -3583974,
+      "routedStatus": "RELEASE_READY",
+      "finalStatus": "RELEASED",
+      "releasedAmountWei": 10000000000000,
+      "evidenceHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "timeline": [
+        {
+          "id": "submitted",
+          "label": "Meter profile submitted",
+          "status": "SUBMITTED",
+          "tx": "0x41014834dce9fe105082dfbaf758cca3a455b67fd066851401a5eeea3c375bd3",
+          "chain": 84532,
+          "block": 61482647
+        },
+        {
+          "id": "screened",
+          "label": "Neural screening on Lasna",
+          "status": "SCREENED",
+          "tx": "0xc3cc2dce22b8462c2e38483196e35a5f406e97ae42b9448f8a7df8bb2f3fc2dd",
+          "chain": 5318007,
+          "block": 8849554
+        },
+        {
+          "id": "callback",
+          "label": "Escrow release-ready",
+          "status": "RELEASE_READY",
+          "tx": "0x97c371c7f19b2011b845e2481d1b48211a954b8cda5e9ae462011df216902035",
+          "chain": 84532,
+          "block": 61482652
+        },
+        {
+          "id": "released",
+          "label": "Separate meter payout",
+          "status": "RELEASED",
+          "tx": "0xe14438c52da0c1f23354fd22e0c60bd6a744a8f4125d04f14c41c0c03083f49a",
+          "chain": 84532,
+          "block": 61482697
+        }
+      ]
+    },
+    "flagged": {
+      "key": "flagged",
+      "name": "Exception profile",
+      "meter": "0x526fa0b8e4885aade8860e25b6ee36964f979165",
+      "sequence": 2,
+      "settlementId": "0x4e6a0568b85861747f03fbb020478923bd6ac5a8cd742fe68402b035abe88644",
+      "profileHash": "0x73a71af1eb53fe605c61902dd477d633627aee4a1c41083ef67a0c5354aff71c",
+      "features": [
+        -1788879,
+        0,
+        310599,
+        1592873,
+        14196,
+        989319,
+        193748,
+        -176319,
+        -1795677,
+        -1811959
+      ],
+      "logitQ": 26727442,
+      "routedStatus": "HOLD_FOR_REVIEW",
+      "finalStatus": "RELEASED",
+      "releasedAmountWei": 10000000000000,
+      "evidenceHash": "0x45dfb65e9caabc346b88bb0fdcda4863413ce52f67107a6939455f87cb738b06",
+      "timeline": [
+        {
+          "id": "pending",
+          "label": "Funded, awaiting decision",
+          "status": "PENDING",
+          "tx": "0x40970cd9658fbe6abe10eb513c2996f4baabcd2519e5eb3c0502fd13f9813ac6",
+          "chain": 84532,
+          "block": 61482730
+        },
+        {
+          "id": "origin",
+          "label": "Meter profile submitted",
+          "status": "PENDING",
+          "tx": "0x1b1813af2853ee4bd3111b0556a3222426b5506cfc06a603767ce13d1de70711",
+          "chain": 84532,
+          "block": 61482776
+        },
+        {
+          "id": "recovered",
+          "label": "Authorized replay after deliberate pause",
+          "status": "PENDING",
+          "tx": "0xaf75b1256e547cc32f407c2b6772d4d184dff7bb7060635212eac286ad567c89",
+          "chain": 84532,
+          "block": 61482825
+        },
+        {
+          "id": "screened",
+          "label": "Reactive routed to human review",
+          "status": "HOLD_FOR_REVIEW",
+          "tx": "0x477e1ee2556a8cc02d51e5ad04385584d5a587d64d9dd7ddfe92cc46322d7000",
+          "chain": 84532,
+          "block": 61482831
+        },
+        {
+          "id": "approved",
+          "label": "Reviewer committed minimal record",
+          "status": "REVIEW_APPROVED",
+          "tx": "0x3dca5e647beb937179012abf76e2056a2290ca09ba96e48f6e3d87cbb03cba5e",
+          "chain": 84532,
+          "block": 61484544
+        },
+        {
+          "id": "released",
+          "label": "Separate meter payout",
+          "status": "RELEASED",
+          "tx": "0x094d5cf03a055ae2d020502e5db19db2fd870cd10ba52c65173f8c748f8411a2",
+          "chain": 84532,
+          "block": 61484574
+        }
+      ]
+    }
+  },
+  "sourceNote": "Derived fixed-point profile features; no underlying 24-hour meter readings are present in the supplied funded proof. Recorded stages are historical, not live transactions.",
+  "reviewNote": "Approve",
+  "reviewDisclaimer": "Minimal synthetic record. Hash matching does not establish investigative quality."
+}

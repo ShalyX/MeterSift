@@ -1,0 +1,43 @@
+{
+  "profileHash": "0x805b27b309dc7278abbf4ea14f2abcf592a1b10005ceba9019e67af4d05b2f95",
+  "meter": "0x3333333333333333333333333333333333333333",
+  "sequence": 1,
+  "scale": 1000000,
+  "featureOrder": [
+    "log_energy_ratio_same_weekday_4w",
+    "zero_hour_fraction",
+    "coefficient_of_variation",
+    "peak_to_mean",
+    "profile_total_variation",
+    "profile_correlation",
+    "reverse_profile_tv",
+    "reverse_profile_correlation",
+    "first_half_log_ratio",
+    "second_half_log_ratio"
+  ],
+  "featuresFloat": [
+    0.497073104414357,
+    0.0,
+    0.31783077594041687,
+    1.6041229807401192,
+    0.009909714542911547,
+    0.9961571767475563,
+    0.20013134564303015,
+    -0.27457036911706373,
+    0.4895056800331022,
+    0.5081659958385698
+  ],
+  "features": [
+    497073,
+    0,
+    317831,
+    1604123,
+    9910,
+    996157,
+    200131,
+    -274570,
+    489506,
+    508166
+  ],
+  "provenance": "SHA-256 commitment to canonical profile input; not an attestation of truthful meter readings"
+}

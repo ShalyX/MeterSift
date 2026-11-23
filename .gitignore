@@ -1,0 +1,44 @@
+.hackathon/
+outputs/
+.env
+.env.*
+!.env.example
+node_modules/
+out/
+cache/
+broadcast/
+artifacts/
+coverage/
+dist/
+build/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.key
+*.pem
+*.p12
+*.seed
+secrets.*
+
+# Hackathon Operator private working records — never publish
+.hackathon/
+/HACKATHON.md
+/COMPETITION_INTELLIGENCE.md
+/WINNING_PROFILE.md
+/SCORECARD.md
+/PROJECT.md
+/HYGIENE.md
+/PRODUCT.md
+/BRAND.md
+/DESIGN.md
+/LANDING_PAGE.md
+/DEMO.md
+/DEMO_STORYBOARD.md
+/DEMO_PRODUCTION_CHECKLIST.md
+/EVIDENCE.md
+/JUDGE_WALKTHROUGH.md
+
+# Local screenshots, browser traces and judge-demo production assets
+experience/qa/
+# Private Remotion production material; audit before public release
+experience/film/
