@@ -1,4 +1,4 @@
-# Model card â€” Meter Profile Anomaly Screen v1
+# Model card — Meter Profile Anomaly Screen v1
 
 ## Intended use
 
@@ -28,7 +28,7 @@ The target is binary at daily-profile level:
 - `0`: all 24 hourly labels for the day are Normal.
 - `1`: at least one hourly label for the day is one of the synthetic theft-pattern classes.
 
-For each day, the feature baseline is the median of the previous four same weekdays (days tâˆ’7, tâˆ’14, tâˆ’21 and tâˆ’28). No current-day or future labels are used as inputs.
+For each day, the feature baseline is the median of the previous four same weekdays (days t−7, t−14, t−21 and t−28). No current-day or future labels are used as inputs.
 
 Ten features, in exact model order:
 1. Log ratio of current daily energy to the previous four same-weekday daily totals' median.
@@ -56,7 +56,7 @@ The split is grouped by building-use category to avoid putting the same category
 
 Held-out test categories: MidriseApartment, QuickServiceRestaurant and SecondarySchool.
 
-The validation threshold was selected to maximize recall subject to validation false-positive rate â‰¤10%. The resulting probability threshold is 0.225. The test set was not used to select the threshold.
+The validation threshold was selected to maximize recall subject to validation false-positive rate ≤10%. The resulting probability threshold is 0.225. The test set was not used to select the threshold.
 
 ## Results
 
@@ -100,9 +100,9 @@ Normal profiles: 2,260 samples; false-positive rate 15.93%.
 
 ## On-chain implementation
 
-- Architecture: 10 inputs â†’ 8 ReLU hidden units â†’ 1 logit.
+- Architecture: 10 inputs → 8 ReLU hidden units → 1 logit.
 - Weights and preprocessing parameters quantized to 1e6 fixed point.
-- Validation probability threshold: 0.225; corresponding quantized logit cutoff: âˆ’1.236763.
+- Validation probability threshold: 0.225; corresponding quantized logit cutoff: −1.236763.
 - Python fixed-point parity: 500 sampled held-out profiles, 100% prediction parity; maximum sampled logit error 0.0000605.
 - Solidity parity test: passed for the checked vector.
 - Solidity model inference: 67,499 gas in the local Foundry harness.
@@ -124,7 +124,7 @@ These demonstrate feature extraction and model routing on held-out synthetic dat
 2. **Theft6:** recall is only 42.8% on the held-out categories.
 3. **False positives:** 15.93% of normal held-out daily profiles were flagged. Human review is mandatory.
 4. **Domain coverage:** the dataset is simulated building energy data, not a representative sample of community microgrids in production.
-5. **Feature provenance:** the meter signs the submitted feature vector in its origin-chain transaction, but the origin contract does not independently recompute the features from the raw profile. The profile hash is a SHA-256 commitment to canonical input, not proof of correct feature extraction.
+5. **Feature provenance:** the configured authorized meter account signs the origin-chain transaction that submits the profile hash and feature vector. This authenticates the submitting EOA only; it is not hardware-backed physical-meter attestation or proof that the underlying readings are truthful. The origin contract does not independently recompute the ten features from the raw profile. The profile hash is a SHA-256 commitment to canonical input, not proof of correct feature extraction.
 6. **Temporal scope:** the model screens daily profiles against historical same-weekday baselines; it is not a real-time hourly detector.
 7. **Operational scope:** synthetic testnet execution does not establish field model performance, operating costs, or production callback reliability.
 8. **Review routing:** the prototype additionally holds profiles within 0.25 logit of the model cutoff or outside the standardized clipping range (±4). These routing rules have not been calibrated to an operator’s review budget.

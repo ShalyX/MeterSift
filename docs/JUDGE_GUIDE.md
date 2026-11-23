@@ -1,17 +1,17 @@
 # MeterSift — Judge Guide
 
-**Status:** Local draft. The public repository and deployed application URL are not configured; this guide has not been published or allowlisted.
+**Status:** Local draft. The public repository is not configured; this guide has not been published or allowlisted. A public frontend URL is optional judge-access convenience; the explorer can be run locally from the repository.
 
 ## The problem
 
 Consider a community energy operator settling payment to a local energy supplier for electricity delivered. The meter profile used to calculate that payment does not reconcile. Paying against questionable data risks overpaying; holding the settlement risks delaying money legitimately owed. Repeating that decision across hundreds of meters becomes difficult to manage consistently.
 
-MeterSift screens signed daily meter profiles and routes suspicious or uncertain cases to evidence-backed human review. The neural model runs inside Reactive; it does not decide guilt or release funds. An authorized operator controls the separate release or refund.
+MeterSift screens daily meter-profile submissions from authorized meter accounts and routes suspicious or uncertain cases to evidence-backed human review. The neural model runs inside Reactive; it does not decide guilt or release funds. An authorized operator controls the separate release or refund.
 
 ## What to evaluate
 
 - **Primary user:** community microgrid and peer-to-peer energy settlement operators.
-- **Core workflow:** signed profile → ten derived features → neural screening inside Reactive → authenticated callback → release-ready or hold-for-review → separate human-controlled settlement action.
+- **Core workflow:** authorized meter-account submission of a profile hash → ten derived features → neural screening inside Reactive → authenticated callback → release-ready or hold-for-review → separate human-controlled settlement action.
 - **Differentiator:** Reactive performs the event-triggered inference and callback; a held case requires an authorized human decision and a separate payout.
 - **Product boundary:** the Python CLI is the settlement-control surface. The React explorer is a read-only presentation and evidence companion.
 
@@ -55,7 +55,7 @@ No reset is needed. Reload the page, switch cases, or restart recorded playback.
 
 Relevant implementation:
 
-- `src/MeterProfileOrigin.sol` — signed profile submission.
+- `src/MeterProfileOrigin.sol` — authorized meter-account profile submission.
 - `src/ReactiveMeterGuard.sol` — Reactive event handling and callback request.
 - `src/MeterSettlementModel.sol` — fixed-point neural screening.
 - `src/SettlementEscrow.sol` — principal protection, review and separate release/refund.
@@ -73,9 +73,10 @@ See [EVIDENCE_SUMMARY.md](EVIDENCE_SUMMARY.md) for the deployed contracts, selec
 - The model benchmark uses synthetic TDD2022 data. It is not field validation.
 - Held-out results include an F1 of 85.81%, a 15.93% false-positive rate and 42.80% recall on synthetic Theft6.
 - The flagged review record is minimal. Its hash proves commitment matching, not investigative quality or independent corroboration.
+- The origin transaction is signed by the configured authorized meter EOA. This authenticates the submitting account, not physical meter hardware or the truth of the underlying readings. The origin contract does not independently recompute the ten features from raw 24-hour readings.
 - The deliberate subscription pause was a controlled recovery demonstration, not evidence of an ordinary production outage.
 - No production utility integration, field performance, customer adoption, automated payout or mainnet deployment is claimed.
 
 ## Evaluation status
 
-On 2026-11-23, the builder-side end-to-end browser rehearsal was repeated from a fresh temporary Git clone with recursive Reactive Omni and forge-std submodules and passed 30/30 checks. It covered the problem-first landing, flagged and routine paths, separate hold/approval/release stages, ten derived features, the evidence drawer, ten transaction receipt rows, read-only current-state RPC and 390px/360px mobile layouts. The read-only Base Sepolia query returned RELEASED with 0 wei remaining at query time. This remains a builder-side simulation, not an independent external judge review. The temporary clone used a local bare origin; the actual application remains local-only, no public repository or deployment is configured, GitHub Actions has not run, and the demo film remains paused. This guide is a prepared draft, not a claim that MeterSift is submission-ready.
+On 2026-11-23, the builder-side end-to-end browser rehearsal was repeated from a fresh temporary Git clone with recursive Reactive Omni and forge-std submodules and passed 31/31 checks. It covered the problem-first landing, flagged and routine paths, separate hold/approval/release stages, ten derived features, the evidence drawer, ten transaction receipt rows, read-only current-state RPC and 390px/360px mobile layouts. The read-only Base Sepolia query returned RELEASED with 0 wei remaining at query time. This remains a builder-side simulation, not an independent external judge review. The temporary clone used a local bare origin; the source remains local-only, no public repository is configured, GitHub Actions has not run, frontend deployment is optional judge-access convenience, and the demo film remains paused. This guide is a prepared draft, not a claim that MeterSift is submission-ready.

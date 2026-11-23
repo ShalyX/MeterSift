@@ -2,13 +2,13 @@
 
 Consider a community energy operator settling payment to a local energy supplier for electricity delivered. The meter profile used to calculate that payment does not reconcile. Paying against questionable data risks overpaying; holding the settlement risks delaying money legitimately owed. Repeating that decision across hundreds of meters becomes difficult to manage consistently.
 
-MeterSift screens signed daily meter profiles and routes suspicious or uncertain settlements to evidence-backed human review. The neural model runs inside Reactive and returns a decision to the escrow; it does not decide guilt or release funds. An authorized operator controls the separate release or refund.
+MeterSift screens daily meter-profile submissions from authorized meter accounts and routes suspicious or uncertain settlements to evidence-backed human review. The neural model runs inside Reactive and returns a decision to the escrow; it does not decide guilt or release funds. An authorized operator controls the separate release or refund.
 
 A model flag is a screening signal, not proof of theft or customer wrongdoing.
 
 ## What it demonstrates
 
-- A signed meter profile is evaluated using ten derived fixed-point features.
+- A profile submission from an authorized meter account is evaluated using ten derived fixed-point features.
 - Reactive processing on Lasna returns an authenticated decision to the Base Sepolia escrow.
 - Routine cases become release-ready; funds move only after a separate operator release.
 - Exception cases remain held until an authorized reviewer records a decision; release or refund is a distinct action.
@@ -16,7 +16,7 @@ A model flag is a screening signal, not proof of theft or customer wrongdoing.
 
 ## Architecture
 
-1. Profile commitment: the submitted profile is committed by hash. The explorer displays ten derived features from synthetic profiles; it does not reconstruct the original hourly readings.
+1. Profile commitment: an authorized meter account submits a profile hash and ten derived features. The transaction signature authenticates the submitting account, not physical meter hardware or the truth of the readings. The origin contract does not independently recompute the features from raw readings. The explorer displays ten derived features from synthetic profiles; it does not reconstruct the original hourly readings.
 2. Screening: the fixed-point model runs in the Reactive workflow. The decision routes the case; it does not itself transfer funds.
 3. Authenticated callback: Reactive processing returns the decision to the origin escrow.
 4. Settlement guard: the escrow tracks the case lifecycle and enforces the operator decision boundary.
@@ -45,7 +45,7 @@ The examples/ fixtures are derived from the held-out TDD2022 benchmark split and
 - [Judge guide](docs/JUDGE_GUIDE.md) — read-only product path, expected behavior and limitations.
 - [Evidence summary](docs/EVIDENCE_SUMMARY.md) — deployed contracts, selected Base Sepolia / Reactive Lasna receipts and evidence boundaries.
 
-These are sanitized local drafts. The public repository, deployment and publication approval are not configured yet.
+These are sanitized local drafts. The public repository and publication approval are not configured yet. A public frontend deployment is optional judge-access convenience, not an explicit submission requirement.
 
 ## Run tests
 
@@ -56,7 +56,7 @@ These are sanitized local drafts. The public repository, deployment and publicat
     npm ci
     npm run build
 
-On 2026-11-23, a temporary clean Git repository was created from the proposed candidate file set, with Reactive Omni represented as the pinned Git submodule. A fresh git clone --recurse-submodules checked out Reactive Omni 3ade0dc and nested forge-std 620536f; the clean clone passed forge build, forge fmt --check, 29/29 Foundry tests, 6/6 Python feature tests (Python 3.13 locally; CI declares 3.12), clean npm ci (0 reported vulnerabilities), and npm run build. A root .gitattributes rule pins Solidity files to LF, so forge fmt --check also passes on Windows when machine-wide core.autocrlf=true. A separate browser rehearsal against that clean clone passed 30/30 checks across the problem-first landing, exception and routine paths, separate human review/release, evidence and chain proof, read-only current state, and 390px/360px mobile layouts. The read-only query returned RELEASED with 0 wei remaining at query time. The temporary clone used a local bare origin; it is not the actual public GitHub repository. GitHub Actions has not run because no remote is configured. No chain writes were performed.
+On 2026-11-23, a temporary clean Git repository was created from the proposed candidate file set, with Reactive Omni represented as the pinned Git submodule. A fresh git clone --recurse-submodules checked out Reactive Omni 3ade0dc and nested forge-std 620536f; the clean clone passed forge build, forge fmt --check, 29/29 Foundry tests, 6/6 Python feature tests (Python 3.13 locally; CI declares 3.12), clean npm ci (0 reported vulnerabilities), and npm run build. A root .gitattributes rule pins Solidity files to LF, so forge fmt --check also passes on Windows when machine-wide core.autocrlf=true. A separate browser rehearsal against that clean clone passed 31/31 checks across the problem-first landing, exception and routine paths, separate human review/release, evidence and chain proof, read-only current state, and 390px/360px mobile layouts. The read-only query returned RELEASED with 0 wei remaining at query time. The temporary clone used a local bare origin; it is not the actual public GitHub repository. GitHub Actions has not run because no remote is configured. No chain writes were performed.
 
 ## Model and limitations
 
@@ -80,4 +80,4 @@ The flagged review note is minimal (the recorded note says "Approve"). Its hash 
 - docs/JUDGE_GUIDE.md
 - docs/EVIDENCE_SUMMARY.md
 
-Release status: local-only. No public deployment, GitHub push or hackathon submission has been made from this working copy.
+Release status: local-only. No public GitHub push or hackathon submission has been made from this working copy. A public frontend deployment is optional judge-access convenience.
