@@ -112,7 +112,7 @@ This was a temporary local Git clone and local bare origin, not the public proje
 
 ## Final release-review rehearsal — 2026-11-24
 
-A release-review candidate was checked from a fresh temporary recursive Git clone with Reactive Omni 3ade0dc and nested forge-std 620536f. Foundry build and formatting passed; Solidity tests passed 29/29; Python feature tests passed 6/6 under Python 3.12.13 (matching CI) and Python 3.13; clean npm ci passed with 0 reported vulnerabilities; and the Vite production build passed. The updated browser judge-path rehearsal passed 34/34 checks, including the account-authenticity disclosure and direct Reactscan link.
+A release-review candidate was checked from a fresh temporary recursive Git clone with Reactive Omni 3ade0dc and nested forge-std 620536f. Foundry build and formatting passed; Solidity tests passed 29/29; Python feature tests passed 6/6 under Python 3.12.13 (matching CI) and Python 3.13; clean npm ci passed with 0 reported vulnerabilities; and the Vite production build passed. The final candidate's builder-side browser judge-path rehearsal passed 35/35 checks, including the account-authenticity disclosure and direct Reactscan and Blockscout receipt links.
 
 Receipt audit: all 14 Base Sepolia and 8 Reactive Lasna transaction hashes listed in this summary returned successful receipts (status 0x1) through their respective RPC endpoints. All eight Lasna Reactscan transaction pages returned HTTP 200 from the build machine. No chain writes were sent. This was a builder-side local rehearsal, not a public GitHub Actions run or independent external judge review.
 
