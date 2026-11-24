@@ -45,7 +45,7 @@ The examples/ fixtures are derived from the held-out TDD2022 benchmark split and
 - [Judge guide](docs/JUDGE_GUIDE.md) — read-only product path, expected behavior and limitations.
 - [Evidence summary](docs/EVIDENCE_SUMMARY.md) — deployed contracts, selected Base Sepolia / Reactive Lasna receipts and evidence boundaries.
 
-These are sanitized local drafts. The public repository and publication approval are not configured yet. A public frontend deployment is optional judge-access convenience, not an explicit submission requirement.
+These judge-facing documents are published in this public repository. Repository: https://github.com/ShalyX/MeterSift (main: `ab44bb937e352292ea2bd59d55a118bb647e7985`). The read-only explorer is source-published but is not currently deployed to a public frontend URL; a frontend deployment is optional judge-access convenience, not an explicit submission requirement.
 
 ## Run tests
 
@@ -56,12 +56,11 @@ These are sanitized local drafts. The public repository and publication approval
     npm ci
     npm run build
 
-On 2026-11-23, a temporary clean Git repository was created from the proposed candidate file set, with Reactive Omni represented as the pinned Git submodule. A fresh git clone --recurse-submodules checked out Reactive Omni 3ade0dc and nested forge-std 620536f; the clean clone passed forge build, forge fmt --check, 29/29 Foundry tests, 6/6 Python feature tests under Python 3.12.13 (matching CI) and Python 3.13, clean npm ci (0 reported vulnerabilities), and npm run build. A root .gitattributes rule pins Solidity files to LF, so forge fmt --check also passes on Windows when machine-wide core.autocrlf=true. A separate browser rehearsal against that clean clone passed 31/31 checks across the problem-first landing, exception and routine paths, separate human review/release, evidence and chain proof, read-only current state, and 390px/360px mobile layouts. The read-only query returned RELEASED with 0 wei remaining at query time. The temporary clone used a local bare origin; it is not the actual public GitHub repository. GitHub Actions has not run because no remote is configured. No chain writes were performed.
+## Public release and reproducibility - 2026-11-24
 
-## Final release-review rehearsal — 2026-11-24
+The approved public repository is [ShalyX/MeterSift](https://github.com/ShalyX/MeterSift), main commit ab44bb937e352292ea2bd59d55a118bb647e7985. A fresh recursive clone checks out the pinned Reactive Omni and nested forge-std submodules. GitHub Actions run [45309492652](https://github.com/ShalyX/MeterSift/actions/runs/45309492652) on this main commit passed every step: Foundry build, Solidity formatting, 29/29 Solidity tests, 6/6 Python feature tests on Python 3.12, clean npm installation and the Vite production build. The clean local npm install reported 0 vulnerabilities.
 
-A follow-up release-review candidate was cloned afresh with recursive Reactive Omni and forge-std submodules. From that clone, Foundry build/format passed, all 29 Solidity tests passed, all 6 Python feature tests passed under Python 3.12.13 (matching CI) and Python 3.13, clean npm ci completed with 0 reported vulnerabilities, and the Vite production build passed. The final candidate's builder-side browser judge-path simulation passed 35/35 checks, including the authorized meter-account wording, the account-signature/physical-meter-attestation boundary, and direct Reactscan and Blockscout receipt links. The 14 Base Sepolia and 8 Reactive Lasna transaction hashes in the evidence summary all returned successful receipts. This remains a temporary local Git rehearsal, not a public GitHub release; GitHub Actions has not run and no chain writes were sent.
-
+A builder-side browser judge-path rehearsal against a fresh clone of this exact public main commit passed **35/35 checks** across the problem-first landing, payer/payee clarity, Reactive integration explanation, flagged and routine settlement paths, separate human approval/release, evidence drawer and commitment, ten features, transaction receipts, read-only current state, and 390px/360px mobile layouts. The point-in-time read-only Base Sepolia query returned RELEASED with 0 wei remaining. This is a builder-side simulation, not an independent external judge review. No chain writes were performed during release QA.
 ## Model and limitations
 
 The compact fixed-point classifier's current synthetic benchmark reports a 15.9% false-positive rate and 42.8% recall on synthetic pattern 6. These are not production performance claims. No live utility field data or independent operational validation has been completed.
@@ -84,4 +83,4 @@ The flagged review note is minimal (the recorded note says "Approve"). Its hash 
 - docs/JUDGE_GUIDE.md
 - docs/EVIDENCE_SUMMARY.md
 
-Release status: local-only. No public GitHub push or hackathon submission has been made from this working copy. A public frontend deployment is optional judge-access convenience.
+Release status: the public GitHub repository is published at https://github.com/ShalyX/MeterSift. The read-only explorer is not deployed to a public frontend URL; a frontend deployment is optional judge-access convenience.

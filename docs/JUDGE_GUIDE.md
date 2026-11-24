@@ -1,6 +1,6 @@
 # MeterSift — Judge Guide
 
-**Status:** Local draft. The public repository is not configured; this guide has not been published or allowlisted. A public frontend URL is optional judge-access convenience; the explorer can be run locally from the repository.
+**Status:** Published judge guide for [ShalyX/MeterSift](https://github.com/ShalyX/MeterSift), main commit `ab44bb937e352292ea2bd59d55a118bb647e7985`. The explorer is run locally from the repository; no public frontend deployment is currently provided. A public frontend URL is optional judge-access convenience.
 
 ## The problem
 
@@ -44,7 +44,7 @@ npm run dev -- --host 127.0.0.1 --port 4176
 
 Open `http://127.0.0.1:4176/`.
 
-The public repository URL is not yet configured. Once a repository is published, clone it with its submodules enabled; the Foundry tests depend on the Reactive library submodule.
+Public repository: https://github.com/ShalyX/MeterSift. Clone the published main branch with recursive submodules: `git clone --recurse-submodules https://github.com/ShalyX/MeterSift.git`. This checks out the pinned Reactive Omni and nested forge-std dependencies required by Foundry.
 
 ## Suggested evaluation path
 
@@ -94,6 +94,8 @@ See [EVIDENCE_SUMMARY.md](EVIDENCE_SUMMARY.md) for the deployed contracts, selec
 
 ## Evaluation status
 
-On 2026-11-23, the builder-side end-to-end browser rehearsal was repeated from a fresh temporary Git clone with recursive Reactive Omni and forge-std submodules and passed 31/31 checks. It covered the problem-first landing, flagged and routine paths, separate hold/approval/release stages, ten derived features, the evidence drawer, ten transaction receipt rows, read-only current-state RPC and 390px/360px mobile layouts. The read-only Base Sepolia query returned RELEASED with 0 wei remaining at query time. This remains a builder-side simulation, not an independent external judge review. The temporary clone used a local bare origin; the source remains local-only, no public repository is configured, GitHub Actions has not run, frontend deployment is optional judge-access convenience, and the demo film remains paused. This guide is a prepared draft, not a claim that MeterSift is submission-ready.
+On 2026-11-24, the exact public main commit ab44bb937e352292ea2bd59d55a118bb647e7985 was cloned afresh with recursive submodules. GitHub Actions run [45309492652](https://github.com/ShalyX/MeterSift/actions/runs/45309492652) passed all steps on that commit: Foundry build, Solidity formatting, 29/29 Solidity tests, 6/6 Python feature tests on Python 3.12, npm installation and the Vite production build. A clean local npm ci also reported 0 vulnerabilities.
 
-A follow-up release-review rehearsal on 2026-11-24 used a fresh candidate from a fresh recursive Git clone. Foundry build/format, 29/29 Solidity tests, 6/6 Python feature tests under Python 3.12.13 (matching CI) and Python 3.13, clean npm ci (0 reported vulnerabilities) and Vite production build passed; the final candidate's builder-side browser judge path passed 35/35 checks. The additional checks verify authorized meter-account wording, the physical-meter-attestation limitation, and direct Reactscan and Blockscout receipt links. All 22 public transaction hashes in the evidence summary returned successful receipts. This is still builder-side validation, not an independent judge review or public GitHub CI run.
+A builder-side browser judge-path rehearsal against that exact public-main clone passed **35/35 checks**. It covered the problem-first landing and payer/payee framing; the Reactive react() and authenticated callback explanation; the funded exception and routine cases; distinct HOLD_FOR_REVIEW, REVIEW_APPROVED and RELEASED states; honest disclosure of the minimal "Approve" review note and account-signature boundary; ten derived features; ten receipt rows with direct Reactscan/Blockscout links; read-only current state; and 390px/360px mobile layouts without horizontal overflow. The point-in-time read-only Base Sepolia query returned RELEASED with 0 wei remaining. No chain writes were performed.
+
+This remains builder-side validation, not an independent external judge review. The public repository is available, but there is no public frontend deployment. The explorer is read-only and runs locally; no wallet or transaction-write access is required.

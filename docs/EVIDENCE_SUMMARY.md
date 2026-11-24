@@ -1,6 +1,6 @@
 # MeterSift — Public Evidence Summary
 
-**Status:** Sanitized local draft. Not yet allowlisted, published or submitted. The canonical claim registry and raw proof files remain private.
+**Status:** Sanitized public evidence summary in [ShalyX/MeterSift](https://github.com/ShalyX/MeterSift), main commit `ab44bb937e352292ea2bd59d55a118bb647e7985`. The canonical claim registry and raw proof files remain private.
 
 ## Testnet environment
 
@@ -102,30 +102,19 @@ These metrics do not establish field performance or real theft detection. The sy
 The private proof bundle records 25 transaction steps. The browser explorer surfaces ten receipt rows. This public derivative intentionally omits account-funding transactions, wallet details, raw meter profiles, raw review JSON, private logs and local environment files.
 
 Both funded cases are testnet demonstrations using synthetic profiles and test ETH. Both final settlements read `RELEASED`; remaining escrow principal, Reactive debt and callback debt were zero at the recorded verification. No mainnet deployment, production utility integration, live meter feed, customer adoption, field validation or automated payout is claimed.
-## Reproducibility and judge-path rehearsal — 2026-11-23
+## Public repository, CI and judge-path verification - 2026-11-24
 
-A temporary clean Git repository was created from the proposed candidate set. A fresh recursive clone checked out Reactive Omni 3ade0dc and nested forge-std 620536f. From that clean clone, Foundry build and formatting passed, all 29 Solidity tests passed, all 6 Python feature tests passed under Python 3.12.13 (matching the workflow) and Python 3.13, npm ci completed with 0 reported vulnerabilities, and the Vite production build passed. The root .gitattributes rule keeps Solidity files at LF on Windows even with core.autocrlf=true.
+Public repository: [ShalyX/MeterSift](https://github.com/ShalyX/MeterSift). Verified main commit: `ab44bb937e352292ea2bd59d55a118bb647e7985`. The repository contains the approved public file set and pins Reactive Omni 3ade0dcf1d27e67e5783ef807e73a1b9e0c0cce8 plus nested forge-std 620536fa5277db4e3fd46772d5cbc1ea0696fb43.
 
-The builder-side browser judge-path rehearsal from that clean clone passed 31/31 checks, including the exception and routine paths, human approval and separate release, evidence drawer, ten receipt rows, read-only current-state query, and 390px/360px mobile layouts. At query time, the read-only Base Sepolia RPC returned RELEASED with 0 wei remaining.
+GitHub Actions main-branch run [45309492652](https://github.com/ShalyX/MeterSift/actions/runs/45309492652) passed every job step on the verified main commit:
+- recursive checkout of both submodules;
+- Foundry build and Solidity formatting;
+- 29/29 Solidity tests;
+- 6/6 Python feature-encoder tests on the workflow's Python 3.12 runtime;
+- Node setup, npm install and Vite production build.
 
-This was a temporary local Git clone and local bare origin, not the public project repository. GitHub Actions has not run because the actual project has no remote. No chain writes were performed. This is builder-side rehearsal evidence, not independent external judge review or field validation.
+A separate fresh recursive clone of the exact public main commit passed a builder-side browser judge-path rehearsal **35/35**. Checks covered the problem-first landing, authorized meter-account framing, Reactive inference and callback explanation, exception and routine paths, distinct review/approval/release states, evidence commitment and minimal-note disclosure, ten feature values, transaction receipt links, read-only current state, and 390px/360px mobile layouts. A point-in-time read-only Base Sepolia query returned RELEASED with 0 wei remaining.
 
-## Final release-review rehearsal — 2026-11-24
+The receipt audit recorded all 14 Base Sepolia and 8 Reactive Lasna transaction hashes in this summary as successful (status 0x1); the browser and CI rehearsals sent no transactions. These results establish reproducibility and builder-side judge-path readiness, not an independent external judge review, customer adoption, field validation, or production performance.
 
-A release-review candidate was checked from a fresh temporary recursive Git clone with Reactive Omni 3ade0dc and nested forge-std 620536f. Foundry build and formatting passed; Solidity tests passed 29/29; Python feature tests passed 6/6 under Python 3.12.13 (matching CI) and Python 3.13; clean npm ci passed with 0 reported vulnerabilities; and the Vite production build passed. The final candidate's builder-side browser judge-path rehearsal passed 35/35 checks, including the account-authenticity disclosure and direct Reactscan and Blockscout receipt links.
-
-Receipt audit: all 14 Base Sepolia and 8 Reactive Lasna transaction hashes listed in this summary returned successful receipts (status 0x1) through their respective RPC endpoints. All eight Lasna Reactscan transaction pages returned HTTP 200 from the build machine. No chain writes were sent. This was a builder-side local rehearsal, not a public GitHub Actions run or independent external judge review.
-
-## Read-only state recheck — 2026-11-24
-
-A fresh read-only RPC check confirmed deployed bytecode at all three recorded contract addresses. Both recorded settlement IDs currently return RELEASED with 0 wei remaining. totalPrincipal() on the escrow, Reactive execution debt for the Reactive contract, and callback debt for the escrow all return zero.
-
-- Base Sepolia (chain ID 84532): latest block observed during the check: 62,770,397.
-- Reactive Lasna (chain ID 5318007): latest block observed during the check: 9,092,274.
-- The normal origin, normal callback, flagged approval and flagged payout receipts returned successful status.
-- The Reactive deployment, normal inference and flagged inference receipts returned successful status.
-- No transactions were sent. These are point-in-time read-only observations, not a guarantee of future state.
-
-## Exact CI Python-version verification - 2026-11-24
-
-The workflow's declared Python 3.12 version was installed in an isolated temporary environment using CPython 3.12.13. The clean-clone development requirements installed successfully, and the exact workflow command `python -m unittest discover -s test -p "test_feature_encoder.py" -v` passed 6/6 tests under Python 3.12.13. The same suite had already passed under Python 3.13. This closes the previously noted local Python-version mismatch; it does not substitute for an actual GitHub Actions run on Ubuntu.
+The public repository is available. The explorer is not deployed to a public frontend URL. This summary documents testnet evidence and builder-side reproducibility; it is not an independent external judge review or field validation.
