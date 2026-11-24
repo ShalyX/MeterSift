@@ -20,7 +20,7 @@ const statusClass = (status: string) => status === "RELEASED" ? "released" : sta
 const formatNum = (n: number) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 5, minimumFractionDigits: 0 }).format(n);
 const short = (s: string, a = 7, b = 6) => s.slice(0, a) + "…" + s.slice(-b);
 const featureLabel = (name: string) => name.replaceAll("_", " ").replace("same weekday 4w", "vs 4-week baseline").replace("log ratio", "log ratio");
-const explorer = (step: Step) => step.chain === 84532 ? "https://sepolia.basescan.org/tx/" + step.tx : step.chain === 5318007 ? "https://lasna.reactscan.net/tx/" + step.tx : null;
+const explorer = (step: Step) => step.chain === 84532 ? "https://base-sepolia.blockscout.com/tx/" + step.tx : step.chain === 5318007 ? "https://lasna.reactscan.net/tx/" + step.tx : null;
 
 function Icon({ name, size = 18 }: { name: string; size?: number }) {
   const paths: Record<string, React.ReactNode> = {
