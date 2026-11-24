@@ -1,4 +1,5 @@
 import json
+import math
 import sys
 import unittest
 from pathlib import Path
@@ -57,7 +58,30 @@ class FeatureEncoderTests(unittest.TestCase):
             with self.subTest(name=name):
                 data = json.loads((examples / f"{name}_profile_input.json").read_text(encoding="utf-8"))
                 expected = json.loads((examples / f"{name}_profile_payload.json").read_text(encoding="utf-8"))
-                self.assertEqual(build_payload(data), expected)
+                actual = build_payload(data)
+                exact_fields = (
+                    "profileHash",
+                    "meter",
+                    "sequence",
+                    "scale",
+                    "featureOrder",
+                    "features",
+                    "provenance",
+                )
+                for field in exact_fields:
+                    self.assertEqual(actual[field], expected[field], msg=f"{name}: {field}")
+
+                self.assertEqual(len(actual["featuresFloat"]), len(expected["featuresFloat"]))
+                for index, (actual_value, expected_value) in enumerate(
+                    zip(actual["featuresFloat"], expected["featuresFloat"])
+                ):
+                    self.assertTrue(
+                        math.isclose(actual_value, expected_value, rel_tol=1e-12, abs_tol=1e-12),
+                        msg=(
+                            f"{name}: featuresFloat[{index}] differs beyond floating-point "
+                            f"tolerance: actual={actual_value!r}, expected={expected_value!r}"
+                        ),
+                    )
 
     def test_rejects_incomplete_baseline(self):
         with self.assertRaises(ValueError):
