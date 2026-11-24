@@ -1,6 +1,6 @@
 # MeterSift — Public Evidence Summary
 
-**Status:** Sanitized public evidence summary in [ShalyX/MeterSift](https://github.com/ShalyX/MeterSift), main commit `ab44bb937e352292ea2bd59d55a118bb647e7985`. The canonical claim registry and raw proof files remain private.
+**Status:** Sanitized public evidence summary in [ShalyX/MeterSift](https://github.com/ShalyX/MeterSift). The validated product-code baseline is `ab44bb937e352292ea2bd59d55a118bb647e7985`; current `main` additionally includes the documentation-only release reconciliation merged in PR #2 (`02ce0353bd720d61fbc9e0b09b8a8371e681dc5b`). Original MeterSift project code is licensed under MIT; third-party components and dataset-derived examples retain their own terms. The canonical claim registry and raw proof files remain private.
 
 ## Testnet environment
 
@@ -102,19 +102,22 @@ These metrics do not establish field performance or real theft detection. The sy
 The private proof bundle records 25 transaction steps. The browser explorer surfaces ten receipt rows. This public derivative intentionally omits account-funding transactions, wallet details, raw meter profiles, raw review JSON, private logs and local environment files.
 
 Both funded cases are testnet demonstrations using synthetic profiles and test ETH. Both final settlements read `RELEASED`; remaining escrow principal, Reactive debt and callback debt were zero at the recorded verification. No mainnet deployment, production utility integration, live meter feed, customer adoption, field validation or automated payout is claimed.
-## Public repository, CI and judge-path verification - 2026-11-24
 
-Public repository: [ShalyX/MeterSift](https://github.com/ShalyX/MeterSift). Verified main commit: `ab44bb937e352292ea2bd59d55a118bb647e7985`. The repository contains the approved public file set and pins Reactive Omni 3ade0dcf1d27e67e5783ef807e73a1b9e0c0cce8 plus nested forge-std 620536fa5277db4e3fd46772d5cbc1ea0696fb43.
+## Public repository, CI and judge-path verification - 2026-11-25
 
-GitHub Actions main-branch run [45309492652](https://github.com/ShalyX/MeterSift/actions/runs/45309492652) passed every job step on the verified main commit:
+Public repository: [ShalyX/MeterSift](https://github.com/ShalyX/MeterSift). Current main commit at this audit: `02ce0353bd720d61fbc9e0b09b8a8371e681dc5b`, which merges the documentation-only release reconciliation in PR #2. The validated product-code baseline remains `ab44bb937e352292ea2bd59d55a118bb647e7985`. The repository pins Reactive Omni `3ade0dcf1d27e67e5783ef807e73a1b9e0c0cce8` plus nested forge-std `620536fa5277db4e3fd46772d5cbc1ea0696fb43`.
+
+GitHub Actions main-branch run [45502368421](https://github.com/ShalyX/MeterSift/actions/runs/45502368421) passed every job step on the current main commit:
 - recursive checkout of both submodules;
 - Foundry build and Solidity formatting;
 - 29/29 Solidity tests;
 - 6/6 Python feature-encoder tests on the workflow's Python 3.12 runtime;
 - Node setup, npm install and Vite production build.
 
-A separate fresh recursive clone of the exact public main commit passed a builder-side browser judge-path rehearsal **35/35**. Checks covered the problem-first landing, authorized meter-account framing, Reactive inference and callback explanation, exception and routine paths, distinct review/approval/release states, evidence commitment and minimal-note disclosure, ten feature values, transaction receipt links, read-only current state, and 390px/360px mobile layouts. A point-in-time read-only Base Sepolia query returned RELEASED with 0 wei remaining.
+A separate fresh recursive clone of the validated product-code baseline passed a builder-side browser judge-path rehearsal **35/35**. Checks covered the problem-first landing, authorized meter-account framing, Reactive inference and callback explanation, exception and routine paths, distinct review/approval/release states, evidence commitment and minimal-note disclosure, ten feature values, transaction receipt links, read-only current state, and 390px/360px mobile layouts. A point-in-time read-only Base Sepolia query returned RELEASED with 0 wei remaining.
 
 The receipt audit recorded all 14 Base Sepolia and 8 Reactive Lasna transaction hashes in this summary as successful (status 0x1); the browser and CI rehearsals sent no transactions. These results establish reproducibility and builder-side judge-path readiness, not an independent external judge review, customer adoption, field validation, or production performance.
+
+Original MeterSift project code is licensed under the MIT License; see the repository [LICENSE](../LICENSE). The pinned Reactive Omni submodule and other third-party dependencies remain under their own license terms. The TDD2022 dataset and derived example fixtures retain their CC BY 4.0 terms and attribution, as documented in the model card and examples README.
 
 The public repository is available. The explorer is not deployed to a public frontend URL. This summary documents testnet evidence and builder-side reproducibility; it is not an independent external judge review or field validation.

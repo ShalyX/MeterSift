@@ -45,7 +45,7 @@ The examples/ fixtures are derived from the held-out TDD2022 benchmark split and
 - [Judge guide](docs/JUDGE_GUIDE.md) — read-only product path, expected behavior and limitations.
 - [Evidence summary](docs/EVIDENCE_SUMMARY.md) — deployed contracts, selected Base Sepolia / Reactive Lasna receipts and evidence boundaries.
 
-These judge-facing documents are published in this public repository. Repository: https://github.com/ShalyX/MeterSift (main: `ab44bb937e352292ea2bd59d55a118bb647e7985`). The read-only explorer is source-published but is not currently deployed to a public frontend URL; a frontend deployment is optional judge-access convenience, not an explicit submission requirement.
+These judge-facing documents are published in this public repository. Repository: https://github.com/ShalyX/MeterSift. The validated product-code baseline is `ab44bb937e352292ea2bd59d55a118bb647e7985`; current `main` additionally includes the documentation-only release reconciliation merged in PR #2 (`02ce0353bd720d61fbc9e0b09b8a8371e681dc5b`). The latest verified main-branch CI run before this licensing proposal is [45502368421](https://github.com/ShalyX/MeterSift/actions/runs/45502368421), which passed on that main commit. The read-only explorer is source-published but is not currently deployed to a public frontend URL; a frontend deployment is optional judge-access convenience, not an explicit submission requirement.
 
 ## Run tests
 
@@ -56,11 +56,12 @@ These judge-facing documents are published in this public repository. Repository
     npm ci
     npm run build
 
-## Public release and reproducibility - 2026-11-24
+## Public release and reproducibility - 2026-11-25
 
-The approved public repository is [ShalyX/MeterSift](https://github.com/ShalyX/MeterSift), main commit ab44bb937e352292ea2bd59d55a118bb647e7985. A fresh recursive clone checks out the pinned Reactive Omni and nested forge-std submodules. GitHub Actions run [45309492652](https://github.com/ShalyX/MeterSift/actions/runs/45309492652) on this main commit passed every step: Foundry build, Solidity formatting, 29/29 Solidity tests, 6/6 Python feature tests on Python 3.12, clean npm installation and the Vite production build. The clean local npm install reported 0 vulnerabilities.
+The public repository is [ShalyX/MeterSift](https://github.com/ShalyX/MeterSift). The validated product-code baseline is `ab44bb937e352292ea2bd59d55a118bb647e7985`; the current `main` branch additionally includes the documentation-only release reconciliation merged in PR #2 (`02ce0353bd720d61fbc9e0b09b8a8371e681dc5b`). A fresh recursive clone checks out the pinned Reactive Omni and nested forge-std submodules. GitHub Actions run [45502368421](https://github.com/ShalyX/MeterSift/actions/runs/45502368421) on current main passed every step: Foundry build, Solidity formatting, 29/29 Solidity tests, 6/6 Python feature tests on Python 3.12, clean npm installation and the Vite production build. The clean local npm install reported 0 vulnerabilities.
 
-A builder-side browser judge-path rehearsal against a fresh clone of this exact public main commit passed **35/35 checks** across the problem-first landing, payer/payee clarity, Reactive integration explanation, flagged and routine settlement paths, separate human approval/release, evidence drawer and commitment, ten features, transaction receipts, read-only current state, and 390px/360px mobile layouts. The point-in-time read-only Base Sepolia query returned RELEASED with 0 wei remaining. This is a builder-side simulation, not an independent external judge review. No chain writes were performed during release QA.
+A builder-side browser judge-path rehearsal against a fresh recursive clone of the validated product-code baseline passed **35/35 checks** across the problem-first landing, payer/payee clarity, Reactive integration explanation, flagged and routine settlement paths, separate human approval/release, evidence drawer and commitment, ten features, transaction receipts, read-only current state, and 390px/360px mobile layouts. The point-in-time read-only Base Sepolia query returned RELEASED with 0 wei remaining. This is a builder-side simulation, not an independent external judge review. No chain writes were performed during release QA.
+
 ## Model and limitations
 
 The compact fixed-point classifier's current synthetic benchmark reports a 15.9% false-positive rate and 42.8% recall on synthetic pattern 6. These are not production performance claims. No live utility field data or independent operational validation has been completed.
@@ -74,6 +75,10 @@ The flagged review note is minimal (the recorded note says "Approve"). Its hash 
 - No claim of theft detection, billing accuracy, or production readiness.
 - The browser explorer is a read-only evidence view, not the settlement-control surface.
 - Private Operator records, raw proof artifacts, QA captures, local environment files and demo-production assets are excluded from the public source tree.
+
+## License and third-party materials
+
+Original MeterSift project code and documentation in this repository are licensed under the MIT License; see [LICENSE](LICENSE). This license does not relicense third-party components. The pinned Reactive Omni submodule and its nested dependencies remain governed by their own license terms. The TDD2022 dataset and the derived example fixtures retain their CC BY 4.0 terms and attribution, as documented in [the model card](docs/model-card.md) and [example notes](examples/README.md).
 
 ## Further reading
 
