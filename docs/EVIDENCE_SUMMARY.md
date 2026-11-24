@@ -104,7 +104,7 @@ The private proof bundle records 25 transaction steps. The browser explorer surf
 Both funded cases are testnet demonstrations using synthetic profiles and test ETH. Both final settlements read `RELEASED`; remaining escrow principal, Reactive debt and callback debt were zero at the recorded verification. No mainnet deployment, production utility integration, live meter feed, customer adoption, field validation or automated payout is claimed.
 ## Reproducibility and judge-path rehearsal — 2026-11-23
 
-A temporary clean Git repository was created from the proposed candidate set. A fresh recursive clone checked out Reactive Omni 3ade0dc and nested forge-std 620536f. From that clean clone, Foundry build and formatting passed, all 29 Solidity tests passed, all 6 Python feature tests passed (Python 3.13 locally; the workflow declares 3.12), npm ci completed with 0 reported vulnerabilities, and the Vite production build passed. The root .gitattributes rule keeps Solidity files at LF on Windows even with core.autocrlf=true.
+A temporary clean Git repository was created from the proposed candidate set. A fresh recursive clone checked out Reactive Omni 3ade0dc and nested forge-std 620536f. From that clean clone, Foundry build and formatting passed, all 29 Solidity tests passed, all 6 Python feature tests passed under Python 3.12.13 (matching the workflow) and Python 3.13, npm ci completed with 0 reported vulnerabilities, and the Vite production build passed. The root .gitattributes rule keeps Solidity files at LF on Windows even with core.autocrlf=true.
 
 The builder-side browser judge-path rehearsal from that clean clone passed 31/31 checks, including the exception and routine paths, human approval and separate release, evidence drawer, ten receipt rows, read-only current-state query, and 390px/360px mobile layouts. At query time, the read-only Base Sepolia RPC returned RELEASED with 0 wei remaining.
 
@@ -112,7 +112,7 @@ This was a temporary local Git clone and local bare origin, not the public proje
 
 ## Final release-review rehearsal — 2026-11-24
 
-A release-review candidate was checked from a fresh temporary recursive Git clone with Reactive Omni 3ade0dc and nested forge-std 620536f. Foundry build and formatting passed; Solidity tests passed 29/29; Python feature tests passed 6/6 (Python 3.13 locally; CI declares 3.12); clean npm ci passed with 0 reported vulnerabilities; and the Vite production build passed. The updated browser judge-path rehearsal passed 34/34 checks, including the account-authenticity disclosure and direct Reactscan link.
+A release-review candidate was checked from a fresh temporary recursive Git clone with Reactive Omni 3ade0dc and nested forge-std 620536f. Foundry build and formatting passed; Solidity tests passed 29/29; Python feature tests passed 6/6 under Python 3.12.13 (matching CI) and Python 3.13; clean npm ci passed with 0 reported vulnerabilities; and the Vite production build passed. The updated browser judge-path rehearsal passed 34/34 checks, including the account-authenticity disclosure and direct Reactscan link.
 
 Receipt audit: all 14 Base Sepolia and 8 Reactive Lasna transaction hashes listed in this summary returned successful receipts (status 0x1) through their respective RPC endpoints. All eight Lasna Reactscan transaction pages returned HTTP 200 from the build machine. No chain writes were sent. This was a builder-side local rehearsal, not a public GitHub Actions run or independent external judge review.
 
@@ -125,3 +125,7 @@ A fresh read-only RPC check confirmed deployed bytecode at all three recorded co
 - The normal origin, normal callback, flagged approval and flagged payout receipts returned successful status.
 - The Reactive deployment, normal inference and flagged inference receipts returned successful status.
 - No transactions were sent. These are point-in-time read-only observations, not a guarantee of future state.
+
+## Exact CI Python-version verification - 2026-11-24
+
+The workflow's declared Python 3.12 version was installed in an isolated temporary environment using CPython 3.12.13. The clean-clone development requirements installed successfully, and the exact workflow command `python -m unittest discover -s test -p "test_feature_encoder.py" -v` passed 6/6 tests under Python 3.12.13. The same suite had already passed under Python 3.13. This closes the previously noted local Python-version mismatch; it does not substitute for an actual GitHub Actions run on Ubuntu.

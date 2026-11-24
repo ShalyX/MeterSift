@@ -15,6 +15,21 @@ MeterSift screens daily meter-profile submissions from authorized meter accounts
 - **Differentiator:** Reactive performs the event-triggered inference and callback; a held case requires an authorized human decision and a separate payout.
 - **Product boundary:** the Python CLI is the settlement-control surface. The React explorer is a read-only presentation and evidence companion.
 
+## Reactive Meets AI - judging map
+
+Reactive Network's [official buildathon brief](https://blog.reactive.network/reactive-omni-buildathon-thirty-days-to-find-out-what-one-second-buys/) says AI must be part of the running system, not merely a tool used to write the project. MeterSift's neural inference executes in `ReactiveMeterGuard.react()` after the origin event is observed; the result determines the authenticated escrow callback and settlement route.
+
+The organizer lists four equally weighted criteria:
+
+| Criterion | What MeterSift demonstrates | Evidence and boundary |
+|---|---|---|
+| **Execution** | Two funded testnet paths complete the origin event -> Reactive inference -> authenticated callback -> separate settlement action loop. | The evidence summary links the deployments and transaction sequence. All 22 listed Base Sepolia and Reactive Lasna transaction receipts returned successful status in the 2026-11-24 read-only audit. |
+| **Integration** | The neural model is executed by the Reactive contract itself; its output changes escrow state to `RELEASE_READY` or `HOLD_FOR_REVIEW`. | Inspect `src/ReactiveMeterGuard.sol` and `src/SettlementEscrow.sol`. Reactive is not a decorative notification layer or an off-chain model API. |
+| **Usefulness** | The workflow gives a community-energy settlement operator a consistent screening and human-review path before funds are released. | This is a prototype use case, not a field-validated utility deployment. The benchmark and funded examples are synthetic/testnet only. |
+| **Craft** | Reproducible contracts and feature encoder, explicit model card, linked chain evidence, a read-only explorer and documented limitations. | 29/29 Solidity tests, 6/6 feature tests under Python 3.12.13 and 3.13, clean npm install and production build. Builder-side browser rehearsal is not independent judging. |
+
+**Recommended evaluation order:** inspect the exception path first to see the model-triggered hold and human gate; verify the Reactive inference and callback receipts; inspect the routine path; then review the model card and limitations. Do not infer physical-meter attestation, real-world theft detection, measured end-to-end latency or production utility adoption from this prototype.
+
 ## Start the read-only explorer
 
 Requirements: Node.js and npm compatible with the Vite 7 toolchain. No wallet, account, signing key, or API credential is needed for the browser explorer.
@@ -81,4 +96,4 @@ See [EVIDENCE_SUMMARY.md](EVIDENCE_SUMMARY.md) for the deployed contracts, selec
 
 On 2026-11-23, the builder-side end-to-end browser rehearsal was repeated from a fresh temporary Git clone with recursive Reactive Omni and forge-std submodules and passed 31/31 checks. It covered the problem-first landing, flagged and routine paths, separate hold/approval/release stages, ten derived features, the evidence drawer, ten transaction receipt rows, read-only current-state RPC and 390px/360px mobile layouts. The read-only Base Sepolia query returned RELEASED with 0 wei remaining at query time. This remains a builder-side simulation, not an independent external judge review. The temporary clone used a local bare origin; the source remains local-only, no public repository is configured, GitHub Actions has not run, frontend deployment is optional judge-access convenience, and the demo film remains paused. This guide is a prepared draft, not a claim that MeterSift is submission-ready.
 
-A follow-up release-review rehearsal on 2026-11-24 used a fresh candidate from a fresh recursive Git clone. Foundry build/format, 29/29 Solidity tests, 6/6 Python feature tests, clean npm ci (0 reported vulnerabilities) and Vite production build passed; the updated browser judge path passed 34/34 checks. The additional checks verify authorized meter-account wording, the physical-meter-attestation limitation and a direct Reactscan receipt link. All 22 public transaction hashes in the evidence summary returned successful receipts. This is still builder-side validation, not an independent judge review or public GitHub CI run.
+A follow-up release-review rehearsal on 2026-11-24 used a fresh candidate from a fresh recursive Git clone. Foundry build/format, 29/29 Solidity tests, 6/6 Python feature tests under Python 3.12.13 (matching CI) and Python 3.13, clean npm ci (0 reported vulnerabilities) and Vite production build passed; the updated browser judge path passed 34/34 checks on the UI-identical candidate; the final candidate changes only documentation after that browser run. The additional checks verify authorized meter-account wording, the physical-meter-attestation limitation and a direct Reactscan receipt link. All 22 public transaction hashes in the evidence summary returned successful receipts. This is still builder-side validation, not an independent judge review or public GitHub CI run.
