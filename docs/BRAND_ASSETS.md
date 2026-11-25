@@ -1,12 +1,12 @@
 # MeterSift brand assets
 
-The visual identity is built around an **open signal sieve**: three meter-profile traces enter the aperture; the middle trace continues through the normal path and branches into a distinct amber review lane. The mark communicates screening and controlled routing, not a verdict.
+The visual identity is built around an **open rectangular signal aperture**. Three meter-profile traces enter from the left; the central trace continues along the ordinary path and forks into a distinct amber review lane. The mark communicates screening and controlled routing, not a verdict.
 
 ## Core palette
 
 | Token | Hex | Use |
 |---|---|---|
-| Ink | `#182C31` | Primary wordmark, frame, dark surfaces |
+| Ink | `#182C31` | Primary wordmark, aperture frame, dark surfaces |
 | Signal Mint | `#70E4CE` | Incoming signal and ordinary path |
 | Review Amber | `#E9B46B` | Exception branch and review state |
 | Paper | `#F4F3EF` | Light backgrounds and contrast |

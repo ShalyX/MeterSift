@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <title>MeterSift</title>
-  <path d="M22 10h22M22 54h22M22 10v44" fill="none" stroke="#182C31" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M5 20h54M5 44h54M5 32h31m0 0h23" fill="none" stroke="#70E4CE" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M36 32c8 0 7-18 20-18h3" fill="none" stroke="#E9B46B" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="36" cy="32" r="2.7" fill="#182C31"/>
-  <circle cx="59" cy="14" r="2.8" fill="#E9B46B"/>
+  <path d="M20 10h23c6 0 11 5 11 11v2M54 42v1c0 6-5 11-11 11H20" fill="none" stroke="#182C31" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5 20h44M5 32h44m0 0h10M5 44h54" fill="none" stroke="#70E4CE" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M49 32c7 0 4-18 13-18" fill="none" stroke="#E9B46B" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="49" cy="32" r="2.7" fill="#182C31"/>
+  <circle cx="62" cy="14" r="2.8" fill="#E9B46B"/>
 </svg>
