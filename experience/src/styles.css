@@ -303,3 +303,43 @@ h1,h2,h3{font-family:"Space Grotesk",sans-serif;letter-spacing:-.05em}
 .case-switch button,.mode-switch button{color:#4d6564}
 .proof-dock .eyebrow.dark{color:#a6c7c5}
 .no-link{color:#4f6765!important}
+
+
+/* MeterSift identity system — shared vector mark and accessible wordmark. */
+.logo{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:#182c31;
+  font-family:"Space Grotesk",sans-serif;
+  font-weight:500;
+  letter-spacing:-1.6px;
+  font-size:28px;
+  line-height:1;
+  white-space:nowrap;
+}
+.logo-mark{
+  display:block;
+  flex:0 0 auto;
+  width:40px;
+  height:40px;
+}
+.logo-wordmark{
+  display:inline-flex;
+  align-items:baseline;
+  color:#182c31;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:28px;
+  font-weight:500;
+  letter-spacing:-1.6px;
+  line-height:1;
+}
+.logo-wordmark strong{font-weight:700}
+.footer .logo-wordmark{font-size:24px}
+@media(max-width:650px){
+  .logo{gap:8px;font-size:23px;letter-spacing:-1.3px}
+  .logo-mark{width:34px;height:34px}
+  .logo-wordmark{font-size:23px;letter-spacing:-1.3px}
+  .footer .logo-mark{width:34px;height:34px}
+  .footer .logo-wordmark{font-size:21px}
+}

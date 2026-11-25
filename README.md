@@ -44,6 +44,7 @@ The examples/ fixtures are derived from the held-out TDD2022 benchmark split and
 
 - [Judge guide](docs/JUDGE_GUIDE.md) — read-only product path, expected behavior and limitations.
 - [Evidence summary](docs/EVIDENCE_SUMMARY.md) — deployed contracts, selected Base Sepolia / Reactive Lasna receipts and evidence boundaries.
+- [Brand assets](docs/BRAND_ASSETS.md) — primary MeterSift mark, wordmark, favicon, app icon and social avatar.
 
 These judge-facing documents are published in this public repository. Repository: https://github.com/ShalyX/MeterSift. The validated product-code baseline is `ab44bb937e352292ea2bd59d55a118bb647e7985`; current `main` additionally includes the documentation-only release reconciliation merged in PR #2 (`02ce0353bd720d61fbc9e0b09b8a8371e681dc5b`). The latest verified main-branch CI run before this licensing proposal is [45502368421](https://github.com/ShalyX/MeterSift/actions/runs/45502368421), which passed on that main commit. The read-only explorer is source-published but is not currently deployed to a public frontend URL; a frontend deployment is optional judge-access convenience, not an explicit submission requirement.
 

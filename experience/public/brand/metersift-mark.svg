@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>MeterSift signal-sieve mark</title>
+  <path d="M22 10h22M22 54h22M22 10v44" stroke="#182C31" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M5 20h54M5 44h54M5 32h31m0 0h23" stroke="#70E4CE" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M36 32c8 0 7-18 20-18h3" stroke="#E9B46B" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="36" cy="32" r="2.7" fill="#182C31"/>
+  <circle cx="59" cy="14" r="2.8" fill="#E9B46B"/>
+</svg>
