@@ -39,7 +39,10 @@ function Icon({ name, size = 18 }: { name: string; size?: number }) {
 }
 
 function Logo() {
-  return <span className="logo"><span className="logo-symbol" aria-hidden="true"><i/><i/><i/></span><span>meter<span className="logo-bold">sift</span></span></span>;
+  return <span className="logo">
+    <img className="logo-mark" src="/brand/metersift-mark.svg" alt="" width={40} height={40} />
+    <span className="logo-wordmark"><span>meter</span><strong>sift</strong></span>
+  </span>;
 }
 
 function App() {
